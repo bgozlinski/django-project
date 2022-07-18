@@ -3,4 +3,4 @@ from .models import Cars
 
 @admin.register(Cars)
 class CarsAdmin(admin.ModelAdmin):
-    list_display = ['marka', 'model', 'nr_wewnetrzny']
+    list_display = ['nr_wewnetrzny']

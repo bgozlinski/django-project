@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,8 +10,20 @@
     <title>Document</title>
 </head>
 <body>
+    {% load static %}
+    <img src="{%  static 'img/saitama_login.png' %}" alt="saitama_login" height="300" width="450">
 
-    <h2> Tu bedzie lista samochodow</h2>
+    {% if cars|length == 0%}
+        <h2>brak wpisów</h2>
+    {% else %}
+        <h3>Ilosc Samochodów w BD: {{ cars|length }}</h3>
+
+        {% for car in cars %}
+            <h3>{{ car }}</h3>
+            <p>{{ car.przebieg }}</p>
+        {% endfor %}
+    {%  endif %}
+
 
 </body>
 </html>
