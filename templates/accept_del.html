@@ -8,10 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Czy napewno chcesz usunąć pozycje?</h1>
+    <h1>Czy napewno chcesz usunąć pojazd nr {{ car.nr_wewnetrzny }}?</h1>
     <form method="POST">
         {% csrf_token %}
         <button type="submit">Usuń</button>
     </form>
+    <a href="{% url 'all' %}">Cofnij</a>
 </body>
 </html>

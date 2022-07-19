@@ -12,6 +12,8 @@
 <body>
     {% load static %}
     <img src="{%  static 'img/saitama_login.png' %}" alt="saitama_login" height="300" width="450">
+    <p></p>
+    <a href="{% url 'add' %}">Dodaj pojazd</a>
 
     {% if cars|length == 0%}
         <h2>brak wpisów</h2>
@@ -21,6 +23,8 @@
         {% for car in cars %}
             <h3>{{ car }}</h3>
             <p>{{ car.przebieg }}</p>
+            <a href="{% url 'edit' car.id %}">Edytuj</a>
+            <a href="{% url 'del' car.id %}">Usuń</a>
         {% endfor %}
     {%  endif %}
 
