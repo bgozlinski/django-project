@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Cars
 from .forms import CarForm
 
@@ -9,6 +10,7 @@ def cars_response(request):
 
 
 # CREATE
+@login_required()
 def cars_add(request):
     form = CarForm(request.POST or None, request.FILES or None)
 
@@ -21,6 +23,7 @@ def cars_add(request):
 
 
 # UPDATE
+@login_required()
 def cars_edit(request, id):
     #  sprawdz czy obiekt istnieje pod id
     car = get_object_or_404(Cars, pk=id)
@@ -36,6 +39,7 @@ def cars_edit(request, id):
 
 
 # DELETE
+@login_required()
 def cars_del(request, id):
     car = get_object_or_404(Cars, pk=id)
 
