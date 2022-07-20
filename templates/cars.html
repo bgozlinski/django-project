@@ -1,43 +1,57 @@
+{% extends 'main.html' %}
+
+{% block title %} Lista pojazdów {% endblock %}
+
+{% block page %}
 
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-    {% if user.is_authenticated %}
-        Jesteś zalogowany jako {{ user.username }}
-        <p></p>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-
-
-    <hr>
-
-    {% load static %}
-    <img src="{%  static 'img/saitama_login.png' %}" alt="saitama_login" height="300" width="450">
-    <p></p>
-    <a href="{% url 'add' %}">Dodaj pojazd</a>
+    <a href="{% url 'add' %}">
+        <i class="bi bi-plus-circle-fill" style="font-size: 2rem; color: green; padding: 5px;"></i>
+    </a>
 
     {% if cars|length == 0%}
         <h2>brak wpisów</h2>
     {% else %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Numer</th>
+                <th scope="col">Data przeglądu serwisowego</th>
+                <th scope="col">Data przeglądu technicznego</th>
+                <th scope="col">Przebieg</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody>
         {% for car in cars %}
-        <h3>{{ car }}</h3>
-        <p>{{ car.przebieg }}</p>
-        <a href="{% url 'edit' car.id %}">Edytuj</a>
-        <a href="{% url 'del' car.id %}">Usuń</a>
+        <tr>
+
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ car }}</td>
+            <td>{{ car.data_przegladu_serwisowego }}</td>
+            <td>{{ car.data_przegladu_technicznego }}</td>
+            <td>{{ car.przebieg }} km</td>
+            <td>
+                <a href="{% url 'edit' car.id %}">
+                    <i class="bi bi-pencil-square" style="font-size: 20px; color: cornflowerblue;"></i>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'del' car.id %}">
+                    <i class="bi bi-trash-fill" style="font-size: 20px; color: red;"></i>
+                </a>
+            </td>
+
+
+        </tr>
         {% endfor %}
+        </tbody>
+    </table>
+
     {%  endif %}
 
-
-</body>
-</html>
+{% endblock %}

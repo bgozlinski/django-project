@@ -6,7 +6,8 @@ from .forms import CarForm
 
 def cars_response(request):
     all_cars = Cars.objects.all()  # ORM - Object Relational Mapping
-    return render(request, 'cars.html', {'cars': all_cars})
+    return render(request, 'cars.html', {'cars': all_cars,
+                                         'range': range(len(all_cars) + 1)})
 
 
 # CREATE
