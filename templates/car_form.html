@@ -5,11 +5,30 @@
 {% block page %}
 
 {% load bootstrap %}
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        <button type="submit">Dodaj</button>
-    </form>
-    <a href="{% url 'all' %}">Cofnij</a>
+
+
+
+        <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+                <div class="col-md-4">
+                        <div class="card " style="width: 18rem;">
+                            <div class="card-body">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form|bootstrap }}
+                                    <button type="submit" class="btn btn-primary">Dodaj</button>
+                                </form>
+                                    <a href="{% url 'all' %}">
+                                        <i class="bi bi-arrow-return-left" style="font-size: 25px;"></i>
+                                    </a>
+
+                            </div>
+                        </div>
+
+                </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
 
 {% endblock %}

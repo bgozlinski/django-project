@@ -7,7 +7,7 @@ from django.contrib.auth import views as auth_views #  autoryzacja uzytkownika
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cars/', include('cars.urls')),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 ]
