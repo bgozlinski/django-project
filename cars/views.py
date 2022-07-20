@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Cars
 from .forms import CarForm
 
-
+@login_required()
 def cars_response(request):
     all_cars = Cars.objects.all()  # ORM - Object Relational Mapping
     return render(request, 'cars.html', {'cars': all_cars,
