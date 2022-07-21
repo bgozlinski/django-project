@@ -2,8 +2,12 @@
   display: flex;
   justify-content: flex-end;
   margin: 5px 5px 5px 5px;
+}
 
-
+.add_button {
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px 5px 5px 5px;
 }
 
 .header_button_btn {
@@ -13,9 +17,12 @@
   align-items: center;
   justify-content: space-around;
   font-size: 20px;
-
 }
 
-.header_button_link{
+.header_button_link {
+  text-decoration: none;
+}
+
+.add_button_link {
   text-decoration: none;
 }

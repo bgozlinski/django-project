@@ -5,9 +5,15 @@
 {% block page %}
 
 
-    <a href="{% url 'add' %}">
-        <i class="bi bi-plus-circle-fill" style="font-size: 2rem; color: green; padding: 5px;"></i>
-    </a>
+
+    <div class="add_button">
+        <a href="{% url 'add' %}" class="add_button_link">
+            <button type="button" class="btn btn-primary header_button_btn">
+                 DODAJ <i class="bi bi-plus-circle" style="font-size: 25px; color: whitesmoke;"></i>
+            </button>
+        </a>
+    </div>
+
 
     {% if cars|length == 0%}
         <h2>brak wpisów</h2>
