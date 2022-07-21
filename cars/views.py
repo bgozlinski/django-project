@@ -2,12 +2,18 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Cars
 from .forms import CarForm
+from datetime import date, timedelta
+
 
 @login_required()
 def cars_response(request):
     all_cars = Cars.objects.all()  # ORM - Object Relational Mapping
+    allert1 = date.today() + timedelta(days=30)
+    allert2 = date.today()
     return render(request, 'cars.html', {'cars': all_cars,
-                                         'range': range(len(all_cars) + 1)})
+                                         'range': range(len(all_cars) + 1),
+                                         'allert1': allert1,
+                                         'allert2': allert2})
 
 
 # CREATE

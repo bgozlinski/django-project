@@ -32,7 +32,22 @@
 
             <th scope="row">{{ forloop.counter }}</th>
             <td>{{ car.nr_wewnetrzny }}</td>
-            <td>{{ car.data_przegladu_serwisowego }}</td>
+            {% if car.data_przegladu_serwisowego < allert2  %}
+                <td style="color: red">{{ car.data_przegladu_serwisowego }}</td>
+            {% elif car.data_przegladu_serwisowego < allert1 %}
+                <td style="color: greenyellow">{{ car.data_przegladu_serwisowego }}</td>
+            {% else %}
+                <td>{{ car.data_przegladu_serwisowego }}</td>
+            {% endif %}
+
+
+{#        if termin < now:#}
+{#    print('po terminie')#}
+{#elif termin < now + timedelta(days=30):#}
+{#    print('mniej niz 30 dni do konca')#}
+{#else:#}
+{#    print('ok')#}
+
             <td>{{ car.data_przegladu_technicznego }}</td>
             <td>{{ car.przebieg }} km</td>
             <td>
